@@ -1,9 +1,10 @@
+
 {% extends 'base.html.twig' %}
 
-{% block title %}Subscribe to our Newsletter{% endblock %}
+{% block title %}Edit subscriber{% endblock %}
 
 {% block body %}
-
+<a href="/admin/subscribers-list">< Back to list</a>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}

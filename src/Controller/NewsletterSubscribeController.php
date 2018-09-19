@@ -32,7 +32,6 @@ class NewsletterSubscribeController extends AbstractController {
 		             ->add( 'save', SubmitType::class, [ 'label' => 'Subscribe to Newsletter' ] )
 		             ->getForm();
 		$form->handleRequest( $request );
-		$registration->name = '';
 
 		if ( $form->isSubmitted() && $form->isValid() ) {
 			$registration->save();

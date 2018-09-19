@@ -22,6 +22,7 @@ class Registration
 	 */
 	public $category;
 
+	public $created;
 
 	public function getDataFile() {
 		return getcwd().'/../data/Registrations.json';
@@ -52,7 +53,10 @@ class Registration
 	{
 		$this->name = $name;
 	}
-	
+	public function setCreated($created)
+	{
+		$this->created = $created;
+	}
 	public function setRegistration($registration)
 	{
 		return $this->registration;
@@ -72,8 +76,42 @@ class Registration
 			'name' => $this->getName(),
 			'email' => $this->getEmail(),
 			'category' => $this->getCategory(),
+			'created' => time(),
 		];
+
 		$registrations[$this->email] = $data_to_save;
 		return file_put_contents($this->getDataFile(), json_encode($registrations)) ? true : false;
+	}
+	public function update() {
+		$json = file_get_contents($this->getDataFile());
+		if ($json) {
+			$registrations = json_decode($json, true);
+		} else {
+			$registrations = [];
+		}
+		$data_to_save = [
+			'name' => $this->getName(),
+			'email' => $this->getEmail(),
+			'category' => $this->getCategory(),
+			'created' => $this->created,
+		];
+
+		$registrations[$this->email] = $data_to_save;
+		return file_put_contents($this->getDataFile(), json_encode($registrations)) ? true : false;
+	}
+
+
+
+	public function loadByEmail($email) {
+		$json = file_get_contents($this->getDataFile());
+		$registrations = json_decode($json, true);
+
+		if (!empty($registrations[$email])) {
+			$data = $registrations[$email];
+			$this->setName($data['name']);
+			$this->setEmail($data['email']);
+			$this->setCreated($data['created']);
+			$this->setCategory($data['category']);
+		}
 	}
 }

@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Category
 {
-	public function getCategories() {
+	public static function getCategories() {
 		return [
 			'Category 1' => 'category_1',
 			'Category 2' => 'category_2',
