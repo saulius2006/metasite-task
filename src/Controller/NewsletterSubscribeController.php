@@ -20,17 +20,21 @@ class NewsletterSubscribeController extends AbstractController {
 	 */
 	public function index( Request $request, ValidatorInterface $validator ) {
 		$registration = new Registration();
-		$category = new Category();
-		$form = $this->createFormBuilder( $registration )
-		             ->add( 'name', TextType::class )
-		             ->add( 'email', EmailType::class )
-		             ->add( 'category', ChoiceType::class, [
-			             'choices' => $category->getCategories(),
-			             'multiple' => true,
-			             'expanded' => true,
-		             ] )
-		             ->add( 'save', SubmitType::class, [ 'label' => 'Subscribe to Newsletter' ] )
-		             ->getForm();
+		$category     = new Category();
+		$form         = $this->createFormBuilder( $registration )
+		                     ->add( 'name', TextType::class, [
+			                     'attr' => [ 'placeholder' => 'Name' ],
+		                     ])
+		                     ->add( 'email', EmailType::class, [
+			                     'attr' => [ 'placeholder' => 'E-mail' ],
+		                     ])
+		                     ->add( 'category', ChoiceType::class, [
+			                     'choices'  => $category->getCategories(),
+			                     'multiple' => TRUE,
+			                     'expanded' => TRUE,
+		                     ] )
+		                     ->add( 'save', SubmitType::class, [ 'label' => 'Subscribe' ] )
+		                     ->getForm();
 		$form->handleRequest( $request );
 
 		if ( $form->isSubmitted() && $form->isValid() ) {
@@ -39,6 +43,7 @@ class NewsletterSubscribeController extends AbstractController {
 				'notice',
 				'You are subscribed to our Newsletter!'
 			);
+
 			return $this->redirectToRoute( 'newsletter_subscribe' );
 		}
 

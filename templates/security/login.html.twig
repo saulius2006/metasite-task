@@ -8,16 +8,16 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Login</h1>
+<div class="page-wrapper">
+
     {% if error %}
         <span class="error">{{ error.messageKey }}</span>
     {% endif %}
-    <form action="{{ path('login') }}" method="POST">
+    <form action="{{ path('login') }}" method="POST" class="login-form">
 
         <input type="text" name="_username" value="{{ last_username }}" placeholder="Username">
         <input type="password" name="_password" placeholder="Password">
-        <button type="submit">Login</button>
+        <button  type="submit">Login</button>
     </form>
 </div>
 {% endblock %}

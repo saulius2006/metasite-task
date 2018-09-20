@@ -1,0 +1,18 @@
+.admin-wrapper {
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+
+}
+
+label {
+    display: block;
+    margin-bottom: 0;
+}
+#form_category label {
+    display: inline-block;
+    margin-right: 15px;
+}
+#form > div {
+    margin: 20px 0 0;
+}

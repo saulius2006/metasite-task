@@ -31,7 +31,7 @@ class AdminEditSubscriberController extends AbstractController
 		                 'multiple' => true,
 		                 'expanded' => true,
 	                 ] )
-	                 ->add( 'save', SubmitType::class, [ 'label' => 'Save' ] )
+	                 ->add( 'save', SubmitType::class, [ 'label' => 'Save', 'attr' => ['class' => 'btn btn-primary'] ] )
 	                 ->getForm();
 	    $form->handleRequest( $request );
 

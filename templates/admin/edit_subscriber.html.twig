@@ -1,11 +1,15 @@
 
-{% extends 'base.html.twig' %}
+{% extends 'base-admin.html.twig' %}
 
 {% block title %}Edit subscriber{% endblock %}
 
 {% block body %}
-<a href="/admin/subscribers-list">< Back to list</a>
+    <div class="admin-wrapper">
+
+        <a href="/admin/subscribers-list">< Back to list</a>
+        <h1>Edit subscriber</h1>
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
+    </div>
 {% endblock %}
