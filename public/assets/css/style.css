@@ -78,3 +78,12 @@ input[type=text]:focus {
 .login-form button {
     margin-top: 20px;
 }
+.flash-message {
+    color: green;
+    width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    bottom: -185px;
+    height: 0;
+}
